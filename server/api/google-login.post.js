@@ -27,7 +27,7 @@ export default defineEventHandler(async (event) => {
                 'token', 
                 JSON.stringify(result.tokens),
                 { 
-                    sameSite: false 
+                    sameSite: 'lax' 
                 })
             return user;
         }
