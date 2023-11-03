@@ -1,5 +1,5 @@
 <template>
-    <div class="group flex flex-col bg-white dark:bg-dark-grey p-4 rounded-lg cursor-pointer shadow-task">
+    <div class="group flex flex-col bg-white dark:bg-dark-grey p-4 rounded-lg cursor-pointer shadow-sm">
         {{ task.title }}
         <!-- <div class="flex justify-between items-center">
             <p class="text-gray-700 font-semibold font-sans tracking-wide text-sm">{{ task.title }}</p>

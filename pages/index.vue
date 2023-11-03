@@ -4,7 +4,9 @@ const router = useRouter()
 import {
     useCodeClient
 } from "vue3-google-signin";
-
+definePageMeta({
+    middleware: 'non-auth'
+})
 const handleOnSuccess = async (response) => {
     const { code } = response;
 
@@ -15,11 +17,8 @@ const handleOnSuccess = async (response) => {
         }
     });
 
-    console.log(result);
-    console.log(router)
     if(result){
-        console.log(router)
-        router.replace('/dashboard')
+        router.replace('/dashboard/work-done')
     }
 };
 

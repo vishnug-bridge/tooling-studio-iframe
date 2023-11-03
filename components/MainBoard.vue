@@ -1,12 +1,30 @@
 <template>
     <template v-if="pending">
-        Loading
+        <span class="loading loading-ball loading-md"></span>
     </template>
     <template v-else>
         
         <div class="min-h-screen py-12 gap-4 grid grid-cols-3 xl:grid-cols-4">
-            <div v-for="(task, key) in tasks" :key="key" class="px-3 py-3 rounded-lg">
-                <p class="text-gray-700 font-semibold font-sans tracking-wide text-md border-b pb-2">{{ task.taskList.title }} </p>
+            <div v-for="(task, key) in tasks" :key="key" class="bg-[#F2F4F7] px-3 py-3 rounded-lg">
+                <div class="flex justify-between items-center">
+                    <p class="text-gray-700 font-semibold font-sans tracking-wide text-md">{{ task.taskList.title }} </p>
+                    <div class="dropdown dropdown-end">
+                        <label :tabindex="key" class="btn btn-sm btn-ghost btn-circle avatar">
+                            <div class="rounded-full ">
+                                <Icon name="bi:three-dots-vertical" size="20px"/>
+                            </div>
+                        </label>
+                        <ul :tabindex="key" class="mt-1 z-[1] p-2 shadow-md menu menu-md dropdown-content bg-base-100 rounded-md w-52">
+                            <li>
+                                <a>
+                                    Delete
+                                </a>
+                            </li>
+                            
+                        </ul>
+                        
+                    </div>   
+                </div>
                 
                 <draggable 
                     class="list-group" 
