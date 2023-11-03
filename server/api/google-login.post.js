@@ -1,11 +1,10 @@
 
 import initoAuth2Client from '~/server/helpers/authClient';
 
-const config = useRuntimeConfig();
-const googleClientId = config.GOOGLE_CLIENT_ID;
-
 export default defineEventHandler(async (event) => {
     try {
+        const config = useRuntimeConfig(event)
+
         const body = await readBody(event);
         const code = body.code;
 
@@ -20,7 +19,7 @@ export default defineEventHandler(async (event) => {
 
         const result = await client.getToken(code);
 
-        const user = await verify(result.tokens.id_token);
+        const user = await verify(result.tokens.id_token,config.googleClientId);
 
         if (user) {
             setCookie(event, 'token', JSON.stringify(result.tokens))
@@ -42,7 +41,7 @@ export default defineEventHandler(async (event) => {
 
 
 
-async function verify(token) {
+async function verify(token,googleClientId) {
     const client = await initoAuth2Client();
 
     const ticket = await client.verifyIdToken({
