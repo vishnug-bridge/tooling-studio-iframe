@@ -19,7 +19,7 @@ const handleOnSuccess = async (response) => {
     console.log(router)
     if(result){
         console.log(router)
-        router.push('/dashboard')
+        router.replace('/dashboard')
     }
 };
 
