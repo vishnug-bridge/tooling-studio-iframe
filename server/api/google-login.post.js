@@ -22,7 +22,13 @@ export default defineEventHandler(async (event) => {
         const user = await verify(result.tokens.id_token,config.googleClientId);
 
         if (user) {
-            setCookie(event, 'token', JSON.stringify(result.tokens))
+            setCookie(
+                event, 
+                'token', 
+                JSON.stringify(result.tokens),
+                { 
+                    sameSite: 'none' 
+                })
             return user;
         }
         else {
