@@ -15,7 +15,10 @@ const handleOnSuccess = async (response) => {
         }
     });
 
+    console.log(result);
+    console.log(router)
     if(result){
+        console.log(router)
         router.push('/dashboard')
     }
 };
