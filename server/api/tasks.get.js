@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
 
     try {
         
-        let token = getCookie(event, 'token') || {};
+        let token = getCookie(event, 'ts_token') || {};
 
         if (token) {
             const cred_client = await setCredentials(token);

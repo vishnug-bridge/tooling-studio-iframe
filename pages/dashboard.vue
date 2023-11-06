@@ -55,6 +55,7 @@
     const activeTab = ref(1);
     const router = useRouter()
     const route = useRoute();
+    const token = useCookie('ts_token');
     import { useAuthStore } from '../store/auth'
 
     const store = useAuthStore()
@@ -76,9 +77,18 @@
         router.replace(url)
     }
 
-    const logout = () => {
-        store.logUserOut();
-        router.replace('/')
+    const logout = async () => {
+        const result = await useLazyFetch('/api/logout',{
+            method:'POST'
+        }); 
+
+        if(result){
+            store.logUserOut().then(()=>{
+                router.replace('/')
+            });
+        }
+        
+        
     }
 </script>
 <style scoped>

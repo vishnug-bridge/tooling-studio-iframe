@@ -3,7 +3,6 @@
         <span class="loading loading-ball loading-md"></span>
     </template>
     <template v-else>
-        
         <div class="min-h-screen py-12 gap-4 grid grid-cols-3 xl:grid-cols-4">
             <div v-for="(task, key) in tasks" :key="key" class="bg-[#F2F4F7] px-3 py-3 rounded-lg">
                 <div class="flex justify-between items-center">

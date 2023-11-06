@@ -11,13 +11,13 @@ export const useAuthStore = defineStore('auth', {
             this.authenticated = true;
             return true;
         },
+        
         async logUserOut() {
-            const token = useCookie('token');
+            const token = useCookie('ts_token');
             this.authenticated = false;
             this.user_data = null;
             token.value = null;
-
-            return true;
+            return true
         },
     },
 });

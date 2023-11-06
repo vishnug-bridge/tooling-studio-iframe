@@ -24,12 +24,13 @@ export default defineEventHandler(async (event) => {
         if (user) {
             setCookie(
                 event, 
-                'token', 
+                'ts_token', 
                 JSON.stringify(result.tokens),
                 { 
                     sameSite: 'none',
                     secure:true
-                })
+                }
+            );
             return user;
         }
         else {
